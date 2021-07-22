@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnFruits = findViewById(R.id.btn_fruits);
         btnDialog.setOnClickListener(btnListener);
         btnFruits.setOnClickListener(btnListener);
+        //DialogInterface.OnClickListener(fruitsMultiItemListener);
     }
     View.OnClickListener btnListener = new View.OnClickListener() {
         @Override
@@ -31,6 +32,13 @@ public class MainActivity extends AppCompatActivity {
             dialog.setPositiveButton("닫기",null);
             dialog.show();
 
+        }
+    };
+
+    DialogInterface.OnMultiChoiceClickListener fruitsMultiItemListener = new DialogInterface.OnMultiChoiceClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+            //btnFruits.setText(fruitsArr[which]);
         }
     };
     DialogInterface.OnClickListener fruitsItemListener = new DialogInterface.OnClickListener() {
