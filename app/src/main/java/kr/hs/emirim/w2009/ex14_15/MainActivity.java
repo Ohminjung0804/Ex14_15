@@ -10,23 +10,32 @@ import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    String[] fruitsArr = {"수박","참외","복숭아"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button btnDialog = findViewById(R.id.btn_dialog);
-        btnDialog.setOnClickListener(btnlistener);
+        Button btnFruits = findViewById(R.id.btn_fruits);
+        btnDialog.setOnClickListener(btnListener);
+        btnFruits.setOnClickListener(btnListener);
     }
-    View.OnClickListener btnlistener = new View.OnClickListener() {
+    View.OnClickListener btnListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             AlertDialog.Builder dialog = new AlertDialog.Builder(getApplicationContext());
-            dialog.setTitle(R.string.dialog_title);
+            dialog.setTitle(R.string.btn_fruits);
             dialog.setMessage(R.string.dialog_message);
-            dialog.setIcon(R.drawable.warning);
-            dialog.setPositiveButton(R.string.btn_positive,null );
+            dialog.setItems(fruitsArr, fruitsItemListener);
+            dialog.setIcon(R.drawable.watermelon);
+            dialog.setPositiveButton("닫기",null);
             dialog.show();
+
+        }
+    };
+    DialogInterface.OnClickListener fruitsItemListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
 
         }
     };
